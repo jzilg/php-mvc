@@ -8,7 +8,11 @@ class Home extends Controller
     {
         parent::__construct();
 
-        $this->view->foo = 'bar';
         $this->view->render('home.php');
+    }
+
+    protected function foo()
+    {
+        $this->view->foo = 'bar';
     }
 }
