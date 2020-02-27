@@ -1,2 +1,6 @@
 # php-mvc
-Own PHP MVC for training
+
+## Start
+```
+docker-compose up
+```
