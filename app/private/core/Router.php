@@ -42,7 +42,7 @@ class Router
 
     public static function redirect(string $url)
     {
-        header('Location: '. $url);
+        header('Location: ' . $url);
         die();
     }
 }
