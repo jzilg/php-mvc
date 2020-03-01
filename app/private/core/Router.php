@@ -31,6 +31,7 @@ class Router
         for ($i = 2; $i < sizeof($urlPath); $i = $i + 2) {
             $key = $urlPath[$i];
             $value = $urlPath[$i + 1];
+            $value = htmlentities($value);
             $params[$key] = $value;
         }
 
