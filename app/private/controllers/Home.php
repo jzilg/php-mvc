@@ -11,8 +11,10 @@ class Home extends Controller
         $this->view->render('home.php');
     }
 
-    protected function foo()
+    protected function user()
     {
-        $this->view->foo = 'bar';
+        $params = Router::getParams();
+
+        $this->view->user = $params['id'];
     }
 }

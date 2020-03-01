@@ -1,6 +1,6 @@
 <article>
     <h1>Home</h1>
     <p>
-        <i><?php echo $this->foo; ?></i>
+        User: <i><?php echo $this->user; ?></i>
     </p>
 </article>

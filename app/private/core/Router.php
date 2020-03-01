@@ -15,9 +15,18 @@ class Router
         return $urlParams[0];
     }
 
-    public static function getActionParam() {
-        $urlParams = self::getUrlParams();
-        return $urlParams[1];
+    public static function getParams()
+    {
+        $urlPath = self::getUrlPath();
+        $params = array();
+
+        for ($i = 2; $i < sizeof($urlPath); $i = $i + 2) {
+            $key = $urlPath[$i];
+            $value = $urlPath[$i + 1];
+            $params[$key] = $value;
+        }
+
+        return $params;
     }
 
     public static function add($route, $function)
