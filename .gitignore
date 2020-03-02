@@ -8,4 +8,4 @@
 .vscode
 
 # Enviorment
-.env
+config.php
