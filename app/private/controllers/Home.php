@@ -1,6 +1,11 @@
 <?php
 
 require_once './private/core/Controller.php';
+require_once './private/models/User.php';
+require_once './private/resources/User.php';
+
+use models\user\User as UserModel;
+use resources\user\User as UserResource;
 
 class Home extends Controller
 {
@@ -15,6 +20,10 @@ class Home extends Controller
     {
         $params = Router::getParams();
 
-        $this->view->user = $params['id'];
+        $user = new UserModel();
+        new UserResource($user);
+
+        $this->view->userId = $user->getId();
+        $this->view->userEmail = $user->getEmail();
     }
 }

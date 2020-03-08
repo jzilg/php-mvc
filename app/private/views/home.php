@@ -1,6 +1,8 @@
 <article>
     <h1>Home</h1>
     <p>
-        User: <i><?php echo $this->user; ?></i>
+        User:
+        <?php echo $this->userId; ?>
+        <?php echo $this->userEmail; ?>
     </p>
 </article>
