@@ -21,7 +21,9 @@ class Home extends Controller
         $params = Router::getParams();
 
         $user = new UserModel();
-        new UserResource($user, $params['id']);
+        $userResource = new UserResource($user);
+
+        $userResource->getUser($params['id']);
 
         $this->view->userId = $user->getId();
         $this->view->userEmail = $user->getEmail();

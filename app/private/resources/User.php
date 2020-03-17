@@ -2,21 +2,22 @@
 
 namespace resources\user;
 
+require_once './private/business-rules/User.php';
 require_once './private/core/DB.php';
 
 use db\DB;
+use businessRules\user\User as UserGateway;
 
-class User
+class User implements UserGateway
 {
-    public function __construct($object, $id)
-    {
-        $data = self::getUserById($id);
+    protected $user;
 
-        $object->setId($data['id']);
-        $object->setEmail($data['email']);
+    public function __construct($user)
+    {
+        $this->user = $user;
     }
 
-    public static function getUserById($id)
+    public function getUser($id)
     {
         DB::connect();
 
@@ -24,6 +25,16 @@ class User
         $response = DB::$connection->query($query);
         $data = $response->fetch_assoc();
 
-        return $data;
+        $this->user->setId($data['id']);
+        $this->user->setEmail($data['email']);
     }
+
+    public function createUser($user)
+    {}
+
+    public function updateUser($user)
+    {}
+
+    public function deleteUser($id)
+    {}
 }
