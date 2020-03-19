@@ -14,12 +14,17 @@ class Controller
         $this->view = new View;
     }
 
+    protected function index()
+    {}
+
     protected function callAction()
     {
         $actionParam = Router::getActionParam();
 
         if (method_exists($this, $actionParam)) {
             $this->{$actionParam}();
+        } else {
+            $this->index();
         }
     }
 }
