@@ -44,7 +44,7 @@ class User extends Controller
         $userResource = new UserResource();
         $userResource->updateUser($user);
 
-        Router::redirect('/user/edit/id/' . $user->id);
+        Router::redirect('/users');
     }
 
     protected function create()
