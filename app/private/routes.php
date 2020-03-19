@@ -3,8 +3,13 @@
 require_once('./private/core/Router.php');
 
 Router::add('index.php', function() {
-    require_once('./private/controllers/User.php');
-    new User;
+    require_once('./private/controllers/Users.php');
+    new Users;
+});
+
+Router::add('users', function() {
+    require_once('./private/controllers/Users.php');
+    new Users;
 });
 
 Router::add('user', function() {

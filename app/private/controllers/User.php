@@ -32,6 +32,7 @@ class User extends Controller
         $this->view->userId = $user->id;
         $this->view->userEmail = $user->email;
         $this->view->formUrl = isset($user->id) ? $url . '/update' : $url . '/create';
+        $this->view->overviewUrl = '/';
     }
 
     protected function update()
@@ -55,9 +56,16 @@ class User extends Controller
         $userResource = new UserResource();
         $userResource->createUser($user);
 
-        Router::redirect('/user/edit/id/' . $user->id);
+        Router::redirect('/users');
     }
 
     protected function delete()
-    {}
+    {
+        $params = Router::getParams();
+
+        $userResource = new UserResource();
+        $userResource->deleteUser($params['id']);
+
+        Router::redirect('/users');
+    }
 }

@@ -1,5 +1,12 @@
-<article>
+<section>
     <h1>Edit User</h1>
+    <ul>
+        <li>
+            <a href="<?php echo $this->overviewUrl; ?>">
+                Back to Overview
+            </a>
+        </li>
+    </ul>
     <form action="<?php echo $this->formUrl; ?>" method="POST">
         <input
             type="text"
@@ -14,4 +21,4 @@
         >
         <button type="submit">Submit</button>
     </form>
-</article>
+</section>
