@@ -5,16 +5,16 @@ require_once './private/resources/User.php';
 
 use resources\user\User as UserResource;
 
-class Home extends Controller
+class User extends Controller
 {
     public function __construct()
     {
         parent::__construct();
 
-        $this->view->render('home.php');
+        $this->view->render('user.php');
     }
 
-    protected function user()
+    protected function edit()
     {
         $params = Router::getParams();
 
