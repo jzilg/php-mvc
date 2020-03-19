@@ -17,6 +17,12 @@ class Router
         return $urlPath[0];
     }
 
+    public static function getControllerUrl()
+    {
+        $controllerParam = self::getControllerParam();
+        return 'http://' . $_SERVER['HTTP_HOST'] . '/' . $controllerParam;
+    }
+
     public static function getActionParam()
     {
         $urlPath = self::getUrlPath();
@@ -58,9 +64,10 @@ class Router
         }
     }
 
-    public static function redirect(string $url)
+    public static function redirect(string $path)
     {
-        header('Location: ' . $url);
+        $baseUrl = 'http://' . $_SERVER['HTTP_HOST'];
+        header('Location: '. $baseUrl . $path);
         die();
     }
 }

@@ -14,9 +14,13 @@ class User implements UserGateway
 {
     public function getUser($id)
     {
-        DB::connect();
+        if ($id == '') {
+            return;
+        }
 
-        $query = 'SELECT * FROM user WHERE id = '. $id;
+        $query = 'SELECT * FROM `user` WHERE `id` = '. $id;
+
+        DB::connect();
         $response = DB::$connection->query($query);
         $data = $response->fetch_assoc();
 
@@ -29,11 +33,26 @@ class User implements UserGateway
     }
 
     public function createUser($user)
-    {}
+    {
+        $query = 'INSERT INTO `user` (`id`, `email`) VALUES ('. $user->id .', "'. $user->email .'")';
+
+        DB::connect();
+        DB::$connection->query($query);
+    }
 
     public function updateUser($user)
-    {}
+    {
+        $query = 'UPDATE `user` SET `email` = "'. $user->email .'" WHERE `id` = '. $user->id;
+
+        DB::connect();
+        DB::$connection->query($query);
+    }
 
     public function deleteUser($id)
-    {}
+    {
+        $query = 'DELETE from `user` WHERE `id` = '. $user->id;
+
+        DB::connect();
+        DB::$connection->query($query);
+    }
 }
