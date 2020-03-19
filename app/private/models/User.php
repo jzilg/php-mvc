@@ -2,24 +2,10 @@
 
 namespace models\user;
 
-class User
+interface User
 {
-    protected $id;
-    protected $email;
-
-    public function setId($val) {
-        $this->id = $val;
-    }
-
-    public function getId() {
-        return $this->id;
-    }
-
-    public function setEmail($val) {
-        $this->email = $val;
-    }
-
-    public function getEmail() {
-        return $this->email;
-    }
+    public function createUser($user);
+    public function updateUser($user);
+    public function getUser($id);
+    public function deleteUser($id);
 }
