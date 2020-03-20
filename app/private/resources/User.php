@@ -16,7 +16,6 @@ class User implements UserGateway
     {
         $query = 'SELECT * FROM `user`';
 
-        MySql::connect();
         $response = MySql::query($query);
 
         $users = array();
@@ -40,7 +39,6 @@ class User implements UserGateway
 
         $query = 'SELECT * FROM `user` WHERE `id` = '. $id;
 
-        MySql::connect();
         $response = MySql::query($query);
         $data = $response->fetch_assoc();
 
@@ -55,7 +53,6 @@ class User implements UserGateway
     {
         $query = 'INSERT INTO `user` (`id`, `email`) VALUES (NULL, "'. $user->email .'")';
 
-        MySql::connect();
         MySql::query($query);
     }
 
@@ -63,7 +60,6 @@ class User implements UserGateway
     {
         $query = 'UPDATE `user` SET `email` = "'. $user->email .'" WHERE `id` = '. $user->id;
 
-        MySql::connect();
         MySql::query($query);
     }
 
@@ -71,7 +67,6 @@ class User implements UserGateway
     {
         $query = 'DELETE from `user` WHERE `id` = '. $id;
 
-        MySql::connect();
         MySql::query($query);
     }
 }

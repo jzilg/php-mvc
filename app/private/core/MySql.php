@@ -19,6 +19,8 @@ class MySql {
 
     public static function query($query)
     {
+        self::connect();
+
         if (!$data = self::$connection->query($query)) {
             die('MYSQL Error: ' . self::$connection->error . '<br>Query: ' . $query);
         }

@@ -17,10 +17,16 @@ class Router
         return $urlPath[0];
     }
 
+    public static function getBaseUrl()
+    {
+        return $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'];
+    }
+
     public static function getControllerUrl()
     {
+        $baseUrl = self::getBaseUrl();
         $controllerParam = self::getControllerParam();
-        return 'http://' . $_SERVER['HTTP_HOST'] . '/' . $controllerParam;
+        return $baseUrl . '/' . $controllerParam;
     }
 
     public static function getActionParam()
