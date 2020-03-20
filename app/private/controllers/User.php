@@ -37,11 +37,12 @@ class User extends Controller
 
     protected function update()
     {
-        $user = new UserEntity();
-        $user->id = $_POST['id'];
-        $user->email = $_POST['email'];
-
         $userResource = new UserResource();
+
+        $user = new UserEntity();
+        $user->id = $userResource->escape($_POST['id']);
+        $user->email = $userResource->escape($_POST['email']);
+
         $userResource->updateUser($user);
 
         Router::redirect('/users');
@@ -49,11 +50,12 @@ class User extends Controller
 
     protected function create()
     {
-        $user = new UserEntity();
-        $user->id = $_POST['id'];
-        $user->email = $_POST['email'];
-
         $userResource = new UserResource();
+
+        $user = new UserEntity();
+        $user->id = $userResource->escape($_POST['id']);
+        $user->email = $userResource->escape($_POST['email']);
+
         $userResource->createUser($user);
 
         Router::redirect('/users');

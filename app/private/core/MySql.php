@@ -29,4 +29,12 @@ class MySql {
 
         return $data;
     }
+
+    public static function escape($string)
+    {
+        self::connect();
+        $string = self::$connection->escape_string($string);
+        self::$connection->close();
+        return $string
+    }
 }
