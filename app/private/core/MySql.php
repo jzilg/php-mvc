@@ -1,11 +1,11 @@
 <?php
 
-namespace db;
+namespace MySql;
 
 use mysqli;
 
-class DB {
-    public static $connection;
+class MySql {
+    protected static $connection;
 
     public static function connect()
     {
@@ -24,6 +24,7 @@ class DB {
         }
 
         self::$connection->close();
+
         return $data;
     }
 }

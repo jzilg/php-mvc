@@ -4,11 +4,11 @@ namespace resources\user;
 
 require_once './private/entities/User.php';
 require_once './private/models/User.php';
-require_once './private/core/DB.php';
+require_once './private/core/MySql.php';
 
 use entities\user\User as UserEntity;
 use models\user\User as UserGateway;
-use db\DB;
+use MySql\MySql;
 
 class User implements UserGateway
 {
@@ -16,8 +16,8 @@ class User implements UserGateway
     {
         $query = 'SELECT * FROM `user`';
 
-        DB::connect();
-        $response = DB::query($query);
+        MySql::connect();
+        $response = MySql::query($query);
 
         $users = array();
 
@@ -40,8 +40,8 @@ class User implements UserGateway
 
         $query = 'SELECT * FROM `user` WHERE `id` = '. $id;
 
-        DB::connect();
-        $response = DB::query($query);
+        MySql::connect();
+        $response = MySql::query($query);
         $data = $response->fetch_assoc();
 
         $user = new UserEntity();
@@ -55,23 +55,23 @@ class User implements UserGateway
     {
         $query = 'INSERT INTO `user` (`id`, `email`) VALUES (NULL, "'. $user->email .'")';
 
-        DB::connect();
-        DB::query($query);
+        MySql::connect();
+        MySql::query($query);
     }
 
     public function updateUser($user)
     {
         $query = 'UPDATE `user` SET `email` = "'. $user->email .'" WHERE `id` = '. $user->id;
 
-        DB::connect();
-        DB::query($query);
+        MySql::connect();
+        MySql::query($query);
     }
 
     public function deleteUser($id)
     {
         $query = 'DELETE from `user` WHERE `id` = '. $id;
 
-        DB::connect();
-        DB::query($query);
+        MySql::connect();
+        MySql::query($query);
     }
 }
