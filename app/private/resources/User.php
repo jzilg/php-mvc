@@ -20,7 +20,7 @@ class User implements UserGateway
 
         $users = array();
 
-        while($data = $response->fetch_assoc()) {
+        while ($data = $response->fetch_assoc()) {
             $user = new UserEntity();
             $user->id = $data['id'];
             $user->email = $data['email'];
