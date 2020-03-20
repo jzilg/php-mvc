@@ -16,4 +16,14 @@ class DB {
             echo self::$connection->connect_error;
         }
     }
+
+    public static function query($query)
+    {
+        if (!$data = self::$connection->query($query)) {
+            die('MYSQL Error: ' . self::$connection->error . '<br>Query: ' . $query);
+        }
+
+        self::$connection->close();
+        return $data;
+    }
 }
