@@ -16,7 +16,7 @@ class User extends Resource implements UserGateway
     {
         $query = 'SELECT * FROM `user`';
 
-        $response = $this->$mysql::query($query);
+        $response = $this->$mysql->query($query);
 
         $users = array();
 
@@ -39,7 +39,7 @@ class User extends Resource implements UserGateway
 
         $query = 'SELECT * FROM `user` WHERE `id` = '. $id;
 
-        $response = $this->$mysql::query($query);
+        $response = $this->$mysql->query($query);
         $data = $response->fetch_assoc();
 
         $user = new UserEntity();
@@ -53,20 +53,20 @@ class User extends Resource implements UserGateway
     {
         $query = 'INSERT INTO `user` (`id`, `email`) VALUES (NULL, "'. $user->email .'")';
 
-        $this->$mysql::query($query);
+        $this->$mysql->query($query);
     }
 
     public function updateUser($user)
     {
         $query = 'UPDATE `user` SET `email` = "'. $user->email .'" WHERE `id` = '. $user->id;
 
-        $this->$mysql::query($query);
+        $this->$mysql->query($query);
     }
 
     public function deleteUser($id)
     {
         $query = 'DELETE from `user` WHERE `id` = '. $id;
 
-        $this->$mysql::query($query);
+        $this->$mysql->query($query);
     }
 }

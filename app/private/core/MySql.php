@@ -5,36 +5,39 @@ namespace MySql;
 use mysqli;
 
 class MySql {
-    protected static $connection;
+    protected $connection;
 
-    public static function connect()
+    public function __construct()
+    {
+        $this->connect();
+    }
+
+    public function __destruct()
+    {
+        $this->$connection->close();
+    }
+
+    public function connect()
     {
         require './private/config.php';
-        self::$connection = new mysqli($DB_HOST, $DB_USER, $DB_PASSWORD, $DB_NAME);
+        $this->$connection = new mysqli($DB_HOST, $DB_USER, $DB_PASSWORD, $DB_NAME);
 
-        if (self::$connection->connect_error) {
-            echo self::$connection->connect_error;
+        if ($this->$connection->connect_error) {
+            echo $this->$connection->connect_error;
         }
     }
 
-    public static function query($query)
+    public function query($query)
     {
-        self::connect();
-
-        if (!$data = self::$connection->query($query)) {
-            die('MYSQL Error: ' . self::$connection->error . '<br>Query: ' . $query);
+        if (!$data = $this->$connection->query($query)) {
+            die('MYSQL Error: ' . $this->$connection->error . '<br>Query: ' . $query);
         }
-
-        self::$connection->close();
 
         return $data;
     }
 
-    public static function escape($string)
+    public function escape($string)
     {
-        self::connect();
-        $string = self::$connection->escape_string($string);
-        self::$connection->close();
-        return $string
+        return $this->$connection->escape_string($string);
     }
 }

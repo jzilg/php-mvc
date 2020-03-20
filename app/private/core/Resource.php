@@ -17,6 +17,6 @@ class Resource
 
     public function escape($string)
     {
-        return $this->$mysql::escape($string);
+        return $this->$mysql->escape($string);
     }
 }
