@@ -5,7 +5,7 @@ namespace MySql;
 use mysqli;
 
 class MySql {
-    protected $connection;
+    private $connection;
 
     public function __construct()
     {

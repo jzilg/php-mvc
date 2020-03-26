@@ -7,7 +7,7 @@ class App
         self::applyRoutes();
     }
 
-    protected static function applyRoutes()
+    private static function applyRoutes()
     {
         require_once './private/routes.php';
     }

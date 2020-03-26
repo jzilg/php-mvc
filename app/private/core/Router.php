@@ -4,14 +4,14 @@ class Router
 {
     public static $routes = array();
 
-    protected static function getUrlPath()
+    private static function getUrlPath()
     {
         $url = $_GET['url'];
         $url = explode('/', $url);
         return $url;
     }
 
-    protected static function getControllerParam()
+    private static function getControllerParam()
     {
         $urlPath = self::getUrlPath();
         return $urlPath[0];

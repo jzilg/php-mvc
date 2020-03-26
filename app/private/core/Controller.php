@@ -10,7 +10,7 @@ class Controller
         self::callAction();
     }
 
-    protected function createView()
+    private function createView()
     {
         require_once('./private/core/View.php');
         $this->view = new View;
@@ -19,7 +19,7 @@ class Controller
     protected function index()
     {}
 
-    protected function callAction()
+    private function callAction()
     {
         $actionParam = Router::getActionParam();
 
