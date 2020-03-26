@@ -21,7 +21,7 @@ class User extends Controller
         $this->edit();
     }
 
-    private function edit()
+    protected function edit()
     {
         $params = Router::getParams();
         $url = Router::getControllerUrl();
@@ -35,7 +35,7 @@ class User extends Controller
         $this->view->overviewUrl = '/';
     }
 
-    private function update()
+    protected function update()
     {
         $userResource = new UserResource();
 
@@ -48,7 +48,7 @@ class User extends Controller
         Router::redirect('/users');
     }
 
-    private function create()
+    protected function create()
     {
         $userResource = new UserResource();
 
@@ -61,7 +61,7 @@ class User extends Controller
         Router::redirect('/users');
     }
 
-    private function delete()
+    protected function delete()
     {
         $params = Router::getParams();
 
