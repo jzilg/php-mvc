@@ -32,3 +32,11 @@ services:
             - php-mvc
         ports:
             - "3306:3306"
+    composer:
+        image: composer:latest
+        container_name: composer
+        volumes:
+            - ./app:/var/www/html
+        working_dir: /var/www/html
+        networks:
+            - php-mvc
